@@ -44,22 +44,22 @@ class KMeans:
                 self.centroids_[k] = np.mean(pointlist[k], axis=1)
             
             iter_count += 1
-        
-        def predict(self, data):
-            '''
-            Takes data and assigns clusters to the points based on
-            current centroids stored in centroids_
 
-            input
-            -----
-            data
-                2D numpy array (convert DataFrames via df.to_numpy())
+    def predict(self, data):
+        '''
+        Takes data and assigns clusters to the points based on
+        current centroids stored in centroids_
 
-            output
-            ------
-            labels
-                ndarray of the labels each point is closest to
-            '''
-            dists = distance.cdist(data, self.centroids_, 'euclidean')
-            labels = np.argmin(dists, axis=1)
-            return labels
+        input
+        -----
+        data
+            2D numpy array (convert DataFrames via df.to_numpy())
+
+        output
+        ------
+        labels
+            ndarray of the labels each point is closest to
+        '''
+        dists = distance.cdist(data, self.centroids_, 'euclidean')
+        labels = np.argmin(dists, axis=1)
+        return labels
